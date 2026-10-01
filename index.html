@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Timetable Grove - Smart Classroom &amp; Timetable Scheduler</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<link href="https://fonts.googleapis.com/css2?family=Young+Serif&family=Figtree:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="hero">
+  <div class="rays"></div>
+  <i class="fly" style="left:14%;top:55%"></i><i class="fly" style="left:48%;top:68%;animation-delay:-3s"></i><i class="fly" style="left:84%;top:62%;animation-delay:-5s"></i>
+  <svg viewBox="0 0 1200 300" preserveAspectRatio="none" aria-hidden="true">
+    <path d="M0 300V150c60-40 90-20 130-60 40 40 70 10 110 50 50-70 90-60 130 0 60-60 100-30 140 20 60-80 110-60 150 10 50-50 90-40 130 10 60-70 120-50 160 20 60-50 110-30 150 30 40-20 70-10 100 20V300Z" fill="#244a33"/>
+    <path d="M0 300V210c50-50 80-30 120 0 50-70 100-50 140 0 60-60 110-50 150 10 50-40 100-30 140 20 60-70 110-60 160 0 50-50 100-40 140 10 50-40 90-30 150 20V300Z" fill="#183626"/>
+    <path d="M0 300V260c80-30 160-20 240 0 100-40 200-30 300 0 120-40 240-30 360 0 100-30 200-20 300 0V300Z" fill="#0f241a"/>
+  </svg>
+  <div class="wrap">
+    <span class="brand">Timetable Grove &middot; CHARUSAT Smart Classroom Scheduler</span>
+    <div class="hero-t">
+      <h1>A clash-free week, grown one class at a time.</h1>
+      <p>Enter your subjects, faculty, rooms and blocked hours. The solver places every class so no teacher, room or batch is booked twice. Then prune it by hand and the clash radar checks every move.</p>
+      <p><button class="btn" id="go">Grow my timetable</button></p>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+<section class="card" id="bench">
+  <h2>Timetable workbench</h2><p class="sub">Switch between batch, teacher and room views of the same week.</p>
+  <div class="bar-t">
+    <label for="view">View</label><select id="view"></select>
+    <button class="btn" id="grow">Grow timetable</button>
+    <span class="log" id="log" role="status"></span>
+  </div>
+  <div class="radar" id="radar" role="status"></div>
+  <div class="ov" id="tt"></div>
+  <p class="hint" id="next"></p>
+  <p class="hint">In a batch view, click a lecture, then click a free slot or another lecture to move or swap it. Lab blocks move only when you grow again. The sun outline marks the period happening now.</p>
+</section>
+
+<div class="g2">
+  <section class="card"><h2>Subjects and faculty</h2><p class="sub">Hours are per batch per week. Lab hours are placed as 2-hour blocks in lab rooms.</p>
+    <div class="srow" style="color:var(--mute);font-size:.82rem"><span>Subject</span><span>Faculty</span><span>Hours</span></div>
+    <div id="subs"></div>
+    <p style="margin:10px 0 0"><button class="btn alt" id="add">Add subject</button></p>
+    <div class="f"><label for="bat">Batches (comma separated)</label><input type="text" id="bat"></div>
+    <div class="f"><label for="lec">Lecture halls</label><input type="text" id="lec"></div>
+    <div class="f"><label for="lab">Labs</label><input type="text" id="lab"></div>
+  </section>
+  <div>
+    <section class="card"><h2>Faculty availability</h2><p class="sub">Mark the slots a teacher cannot take. Brown means blocked.</p>
+      <select id="bf" aria-label="Faculty"></select><div class="bg" id="bg"></div></section>
+    <section class="card"><h2>Who is free?</h2><p class="sub">Find a substitute teacher or a spare room.</p>
+      <div class="bar-t"><select id="fd" aria-label="Day"></select><select id="fp" aria-label="Period"></select></div><div id="fr"></div></section>
+  </div>
+</div>
+
+<div class="g3">
+  <section class="card"><h2>Faculty load</h2><p class="sub">Teaching hours per week.</p><div id="ld"></div></section>
+  <section class="card"><h2>Room use</h2><p class="sub">Share of the 30 weekly slots.</p><div id="ru"></div></section>
+  <section class="card"><h2>Day balance</h2><p class="sub">Hours per day in the current view.</p><div id="db"></div></section>
+</div>
+
+<section class="card"><h2>Take it with you</h2><p class="sub">Copy the full timetable as CSV for a sheet or a message.</p>
+  <button class="btn alt" id="exp">Show CSV</button><textarea id="csv" readonly aria-label="CSV export"></textarea></section>
+</main>
+<footer>Built for the GrowWithGit challenge. Your data stays in this browser.</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
